@@ -1,0 +1,64 @@
+//@Metadata.layer: #CUSTOMER
+//@UI: {
+//  headerInfo: { typeName: 'Leave Day', 
+//                typeNamePlural: 'Leave Days', 
+//                title: { type: #STANDARD, value: 'LeaveItemNo' } }
+//}
+//annotate view ZCIT_010_OC with
+//{
+//  @UI.facet: [
+//    { id: 'idItemDetails', 
+//      type: #IDENTIFICATION_REFERENCE, 
+//      label: 'Day Details', 
+//      position: 10 }
+//  ]
+//
+//  @UI: { lineItem:       [{ position: 10 }],
+//         identification: [{ position: 10 }] }
+//  LeaveItemNo;
+//
+//  @UI: { lineItem:       [{ position: 20 }],
+//         identification: [{ position: 20 }] }
+//  LeaveDate;
+//
+//  @UI: { lineItem:       [{ position: 30 }],
+//         identification: [{ position: 30 }] }
+//  DayType;
+//}
+
+
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName:       'Leave Day',
+                typeNamePlural: 'Leave Days',
+                title:          { type: #STANDARD, value: 'LeaveItemNo' } }
+}
+annotate view ZCIT_010_OC with
+{
+
+
+  @UI.facet: [
+    { id:       'idItemDetails',
+      type:     #IDENTIFICATION_REFERENCE,
+      label:    'Day Details',
+      position: 10 }
+  ]
+
+  @UI: {
+    lineItem:       [{ position: 10, label: 'Item No' }],
+    identification: [{ position: 10, label: 'Item No' }]
+  }
+  LeaveItemNo;
+
+  @UI: {
+    lineItem:       [{ position: 20, label: 'Leave Date' }],
+    identification: [{ position: 20, label: 'Leave Date' }]
+  }
+  LeaveDate;
+
+  @UI: {
+    lineItem:       [{ position: 30, label: 'Day Type' }],
+    identification: [{ position: 30, label: 'Day Type' }]
+  }
+  DayType;
+}

@@ -1,0 +1,72 @@
+unmanaged implementation in class zbp_cit_010_i unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZCIT_010_I alias LeaveHeader
+implementation in class zbp_cit_010_i unique
+draft table zcit_010_hdr_d
+lock master
+total etag LocalLastChangedAt
+authorization master ( instance )
+{
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+
+  association _LeaveItems { create; with draft; }
+
+
+
+  mapping for zcit_010_hdr
+  {
+    LeaveID             = leave_id;
+    EmployeeID          = employee_id;
+    LeaveType           = leave_type;
+    StartDate           = start_date;
+    EndDate             = end_date;
+    Status              = status;
+    LocalCreatedBy      = local_created_by;
+    LocalCreatedAt      = local_created_at;
+    LocalLastChangedBy  = local_last_changed_by;
+    LocalLastChangedAt  = local_last_changed_at;
+    LastChangedAt       = last_changed_at;
+  }
+
+}
+define behavior for ZCIT_010_O alias LeaveItems
+implementation in class zbp_cit_010_i unique
+draft table zcit_010_itm_d
+lock dependent by _Header
+authorization dependent by _Header
+{
+
+  create;
+  update;
+  delete;
+
+  association _Header { with draft; }
+
+  field ( readonly ) LeaveID;
+
+  mapping for zcit_010_itm
+  {
+    LeaveID             = leave_id;
+    LeaveItemNo         = leave_item_no;
+    LeaveDate           = leave_date;
+    DayType             = day_type;
+    LocalCreatedBy      = local_created_by;
+    LocalCreatedAt      = local_created_at;
+    LocalLastChangedBy  = local_last_changed_by;
+    LocalLastChangedAt  = local_last_changed_at;
+    LastChangedAt       = last_changed_at;
+  }
+
+}

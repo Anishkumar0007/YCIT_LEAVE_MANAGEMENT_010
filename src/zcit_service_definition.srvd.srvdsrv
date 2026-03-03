@@ -1,0 +1,5 @@
+@EndUserText.label: 'CREATING SERVICE DEFINiTION from consumption view header'
+define service ZCIT_SERVICE_DEFinition {
+  expose ZCIT_010_C  as LeaveHeader;
+  expose ZCIT_010_OC as LeaveItems;
+}

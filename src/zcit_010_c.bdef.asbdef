@@ -1,0 +1,33 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZCIT_010_C alias LeaveHeader
+{
+
+  use create;
+  use update;
+  use delete;
+
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+
+
+  use association _LeaveItems { create; with draft; }
+
+}
+define behavior for ZCIT_010_OC alias LeaveItems
+{
+
+  use create;
+  use update;
+  use delete;
+
+  use association _Header { with draft; }
+
+}
